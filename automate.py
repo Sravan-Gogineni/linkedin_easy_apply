@@ -12,12 +12,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 driver = webdriver.Chrome()
+
 try:
     driver.get("http://www.google.com")
     time.sleep(1)
     search_box = driver.find_element(By.XPATH, '//*[@id="APjFqb"]')
-    search_box.send_keys("LinkedIn") 
-    search_box.submit()  
+    search_box.send_keys("LinkedIn")
+
+    search_box.submit()
     time.sleep(5)
     
     linked_in = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[12]/div/div[1]/div[2]/div[2]/div/div/div[1]/div/div/div/div/div/div/div/div/div[1]/div/span/a/h3')
@@ -29,7 +31,7 @@ try:
     time.sleep(3)
     
     email = driver.find_element(By.XPATH, '/html/body/div/main/div[2]/div[1]/form/div[1]/input')
-    email.send_keys("johnabhraham286@gmail.com")
+    email.send_keys("sravangogineni80@gmail.com")
     time.sleep(4)
     
     password = driver.find_element(By.XPATH, '/html/body/div/main/div[2]/div[1]/form/div[2]/input')
@@ -76,6 +78,8 @@ try:
             WebDriverWait(driver, 10).until(EC.element_to_be_clickable(element))
             element.click()
             time.sleep(2)  
+            easy_apply = driver.find_element(By.CLASS_NAME, 'jobs-apply-button')
+            easy_apply.click()
             print(f"Clicked on: {element.get_attribute('aria-label')}")  
             time.sleep(2000)
         except Exception as e:
